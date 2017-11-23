@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "Receipt+CoreDataClass.h"
 
 @interface AppDelegate ()
+@property (nonatomic, strong) NSManagedObjectContext *context;
 
 @end
 
@@ -17,9 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.context = self.persistentContainer.viewContext;
+    
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -48,6 +51,18 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+#pragma mark - CoreData Convenience Methods
+
+-(void)fetchEntity{
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Receipt"];
+    NSArray <Receipt*>*receipts = [self.context executeFetchRequest:fetch error:nil];
+//    Print out what was fetched
+    for (Receipt* receipt in receipts) {
+        NSLog(@"Notes: %@ \n Amount: %@ \n TimeStamp: %@ \n Tags: %@", receipt.note, @(receipt.amount), receipt.timeStamp, receipt.tags);
+    }
+}
+
 
 
 #pragma mark - Core Data stack

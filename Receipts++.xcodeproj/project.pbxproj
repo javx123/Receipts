@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D89B62D1FC756F5000D093E /* AddReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89B62C1FC756F5000D093E /* AddReceiptViewController.m */; };
+		2D89B6301FC77614000D093E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89B62F1FC77614000D093E /* DetailViewController.m */; };
 		2DB131FD1FC73D1F00F14613 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB131FC1FC73D1F00F14613 /* AppDelegate.m */; };
 		2DB132001FC73D2000F14613 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB131FF1FC73D2000F14613 /* ViewController.m */; };
 		2DB132031FC73D2000F14613 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB132011FC73D2000F14613 /* Main.storyboard */; };
@@ -17,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D89B62B1FC756F5000D093E /* AddReceiptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddReceiptViewController.h; sourceTree = "<group>"; };
+		2D89B62C1FC756F5000D093E /* AddReceiptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddReceiptViewController.m; sourceTree = "<group>"; };
+		2D89B62E1FC77614000D093E /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2D89B62F1FC77614000D093E /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		2DB131F81FC73D1F00F14613 /* Receipts++.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Receipts++.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DB131FB1FC73D1F00F14613 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DB131FC1FC73D1F00F14613 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,6 +71,10 @@
 				2DB131FE1FC73D1F00F14613 /* ViewController.h */,
 				2DB131FF1FC73D2000F14613 /* ViewController.m */,
 				2DB132011FC73D2000F14613 /* Main.storyboard */,
+				2D89B62E1FC77614000D093E /* DetailViewController.h */,
+				2D89B62F1FC77614000D093E /* DetailViewController.m */,
+				2D89B62B1FC756F5000D093E /* AddReceiptViewController.h */,
+				2D89B62C1FC756F5000D093E /* AddReceiptViewController.m */,
 				2DB132071FC73D2000F14613 /* Assets.xcassets */,
 				2DB132091FC73D2000F14613 /* LaunchScreen.storyboard */,
 				2DB1320C1FC73D2000F14613 /* Info.plist */,
@@ -146,9 +156,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DB132001FC73D2000F14613 /* ViewController.m in Sources */,
+				2D89B62D1FC756F5000D093E /* AddReceiptViewController.m in Sources */,
 				2DB131FD1FC73D1F00F14613 /* AppDelegate.m in Sources */,
 				2DB1320E1FC73D2000F14613 /* main.m in Sources */,
 				2DB132061FC73D2000F14613 /* Receipts__.xcdatamodeld in Sources */,
+				2D89B6301FC77614000D093E /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
