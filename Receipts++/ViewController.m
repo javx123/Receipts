@@ -11,37 +11,41 @@
 #import "Tag+CoreDataClass.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "DataHandler.h"
+#import "AddReceiptViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSArray <Tag*>* tags;
+@property (nonatomic, strong) DataHandler *dataHandler;
 
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    [self fetchData];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
-}
-
--(void)fetchData{
-    AppDelegate *appDelegate = ((AppDelegate*)[[UIApplication sharedApplication] delegate]);
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"tagName" ascending:YES];
-    [request setSortDescriptors:@[sort]];
-    self.tags = [appDelegate.persistentContainer.viewContext executeFetchRequest:request error:nil];
-}
 -(void)setTags:(NSArray<Tag *> *)tags{
     _tags = tags;
     [self.tableView reloadData];
 }
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    self.dataHandler = [[DataHandler alloc]init];
+    self.tags = [self.dataHandler fetchTagData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
+}
+
+#pragma mark - Data Methods
+
+-(void)fetchData{
+    self.tags = [self.dataHandler fetchTagData];
+}
+
+
+#pragma mark - TableView DataSource Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return  self.tags.count;
@@ -64,6 +68,8 @@
     return cell;
 }
 
+#pragma mark - Segue Methods
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -72,6 +78,11 @@
         [controller setReceipt:receipt];
         [controller setTagIndex:indexPath.section];
         
+    }
+    if ([segue.identifier isEqualToString:@"addReceipt"]) {
+        UINavigationController *navController = [segue destinationViewController];
+        AddReceiptViewController *controller = [navController viewControllers][0];
+        [controller setDataHandler:self.dataHandler];
     }
 }
 

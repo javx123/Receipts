@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataHandler.h"
 
 @interface AddReceiptViewController : UIViewController
+
+@property (nonatomic, strong) DataHandler *dataHandler;
 
 @end

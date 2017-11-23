@@ -28,7 +28,7 @@
 -(void)configureView{
     self.notesLabel.text = self.receipt.note;
     self.amountLabel.text = [NSString stringWithFormat:@"%d", self.receipt.amount ];
-    self.tagLabel.text = self.receipt.tags[self.tagIndex].tagName;
+//    self.tagLabel.text = self.receipt.tags[self.tagIndex].tagName;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     
     [dateFormatter setDateFormat:@"dd-MM-yyy HH:mm"];
