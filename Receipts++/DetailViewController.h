@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Receipt+CoreDataClass.h"
 
 @interface DetailViewController : UIViewController
+
+@property (nonatomic, strong) Receipt *receipt;
+@property (nonatomic, assign) NSInteger tagIndex;
 
 @end

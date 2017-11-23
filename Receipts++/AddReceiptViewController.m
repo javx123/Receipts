@@ -55,7 +55,7 @@
             [tagArray addObject:tag];
         }
     }
-    NSSet *tags = [NSSet setWithArray:tagArray];
+    NSOrderedSet *tags = [NSOrderedSet orderedSetWithArray:tagArray];
     
     receipt.tags = tags;
     

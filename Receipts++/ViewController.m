@@ -10,6 +10,7 @@
 #import "Receipt+CoreDataClass.h"
 #import "Tag+CoreDataClass.h"
 #import "AppDelegate.h"
+#import "DetailViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -61,6 +62,17 @@
     cell.textLabel.text = self.tags[indexPath.section].receipts[indexPath.row].note;
     ;
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Receipt *receipt = self.tags[indexPath.section].receipts[indexPath.row];
+        DetailViewController *controller = [segue destinationViewController];
+        [controller setReceipt:receipt];
+        [controller setTagIndex:indexPath.section];
+        
+    }
 }
 
 
